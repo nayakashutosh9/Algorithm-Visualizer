@@ -48,13 +48,13 @@ document.getElementById("gen").addEventListener("click",function(){
 });
 document.getElementById("bubble").addEventListener("click",function(){
     var i=0,j=0;
-    var t1=setInterval(bout,300);
+    var t1=setInterval(bout,200);
     function bout(){
         if(i==size){
             clearInterval(t1);
         }
         else{
-            var t2=setInterval(bin,300);
+            var t2=setInterval(bin,200);
             function bin(){
                 if(j==(size-1)){
                     clearInterval(t2);
@@ -78,29 +78,25 @@ document.getElementById("bubble").addEventListener("click",function(){
 });
 document.getElementById("insertion").addEventListener("click",function(){
     var i=1,j=0;
-    var t1=setInterval(iout,300);
+    var t1=setInterval(iout,200);
     function iout(){
         if(i==size){
             clearInterval(t1);
         }
         else{
             var px=arr[i];j=i-1;
-            var t2=setInterval(iin,300);
+            var t2=setInterval(iin,200);
             draw();
             console.log("i=",i);
             i++;
             function iin(){
-                if(j>=0 && arr[j]>px){
+                while(j>=0 && arr[j]>px){
                     arr[j+1]=arr[j];
                     draw(j,j+1);
-                    console.log("j=",j);
                     j--;
                 }
-                else{
-                    clearInterval(t2);
-                    arr[j+1]=px;
-                    return;
-                }
+                arr[j+1]=px;
+                clearInterval(t2);
             }
         }
     }
