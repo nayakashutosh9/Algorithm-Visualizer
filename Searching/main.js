@@ -64,6 +64,7 @@ function drawb(s=-1,e=-1){
 }
 init();
 document.getElementById("gen").addEventListener("click",function(){
+    document.getElementById("result").innerHTML="";
     generate();
     draw();
     console.log("new array generated!!!");
