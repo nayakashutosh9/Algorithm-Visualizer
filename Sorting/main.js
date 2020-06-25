@@ -44,6 +44,7 @@ init();
 document.getElementById("gen").addEventListener("click",function(){
     generate();
     draw();
+    console.log(arr);
     console.log("new array generated!!!");
 });
 document.getElementById("bubble").addEventListener("click",function(){
@@ -77,15 +78,15 @@ document.getElementById("bubble").addEventListener("click",function(){
     console.log("bubble sort done!!!");
 });
 document.getElementById("insertion").addEventListener("click",function(){
-    var i=1,j=0;
-    var t1=setInterval(iout,200);
+    i=1;j=0;
+    t1=setInterval(iout,200);
     function iout(){
         if(i==size){
             clearInterval(t1);
         }
         else{
-            var px=arr[i];j=i-1;
-            var t2=setInterval(iin,200);
+            px=arr[i];j=i-1;
+            t2=setInterval(iin,200);
             draw();
             console.log("i=",i);
             i++;
@@ -93,17 +94,49 @@ document.getElementById("insertion").addEventListener("click",function(){
                 while(j>=0 && arr[j]>px){
                     arr[j+1]=arr[j];
                     draw(j,j+1);
+                    console.log(j);
                     j--;
                 }
                 arr[j+1]=px;
                 clearInterval(t2);
+                return;
             }
         }
     }
     console.log("insertion sort done!!!");
 });
-document.getElementById("merge").addEventListener("click",function(){
-    generate();
-    draw();
-    console.log("merge sort done!!!");
+document.getElementById("select").addEventListener("click",function(){
+    i=0;j=0;index=-1;
+    t1=setInterval(sout,200);
+    function sout(){
+        if(i==(size-1)){
+            clearInterval(t1);
+            return;
+        }
+        else{
+            index=i;j=i+1;
+            console.log("i,j",i,j);
+            // t2=setInterval(sin,200);
+            sin();
+            draw(i,index);
+            console.log("i,index",i,index);
+            var temp=arr[i];
+            arr[i]=arr[index];
+            arr[index]=temp;
+            function sin(){
+                while(j<size){
+                    if(arr[j]<arr[index]){
+                        index=j;
+                    }
+                    j++;
+                }
+                // clearInterval(t2);
+                return;
+            }
+            draw(i);
+            i++;
+        }
+    }
+    console.log("selection sort done!!!");
 });
+
